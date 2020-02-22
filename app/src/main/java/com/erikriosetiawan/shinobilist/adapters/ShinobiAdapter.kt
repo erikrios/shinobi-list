@@ -3,6 +3,7 @@ package com.erikriosetiawan.shinobilist.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.shinobilist.databinding.ListShinobiBinding
 import com.erikriosetiawan.shinobilist.models.Shinobi
@@ -18,7 +19,7 @@ class ShinobiAdapter(var context: Context, var shinobis: MutableList<Shinobi>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(shinobis[position]) {
-            // Intent code here
+            Toast.makeText(context, shinobis[position].name, Toast.LENGTH_SHORT).show()
         }
     }
 
