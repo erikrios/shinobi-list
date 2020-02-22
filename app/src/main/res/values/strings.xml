@@ -3,4 +3,5 @@
     <string name="shinobi_name">Shinobi Name</string>
     <string name="village">Village</string>
     <string name="description">Description</string>
+    <string name="save">Save</string>
 </resources>
