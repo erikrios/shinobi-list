@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -21,6 +23,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -31,7 +36,7 @@ dependencies {
     // Android KTX
     implementation 'androidx.core:core-ktx:1.2.0'
 
-    // Constaraint Layout
+    // Constraint Layout
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // Material Design
