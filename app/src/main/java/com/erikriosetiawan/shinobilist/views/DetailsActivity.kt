@@ -17,21 +17,15 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
-        setActionBar()
         binding.buttonSave.setOnClickListener {
             addNewData()
             finish()
         }
     }
 
-    // Set support action bar
-    private fun setActionBar() {
-        setSupportActionBar(binding.toolbar)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_details, menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

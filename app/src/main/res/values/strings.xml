@@ -8,4 +8,5 @@
     <string name="shinobi_name_error_message">Shinobi name must not be empty!</string>
     <string name="shinobi_village_error_message">Shinobi village must not be empty!</string>
     <string name="shinobi_description_error_message">Shinobi description must no be empty!</string>
+    <string name="shinobiI_details">Shinobi Details</string>
 </resources>
