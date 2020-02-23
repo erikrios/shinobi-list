@@ -4,7 +4,10 @@ import com.erikriosetiawan.shinobilist.models.Shinobi
 
 object SampleData {
 
-    val shinobis: MutableList<Shinobi> = mutableListOf()
+    private val shinobis: MutableList<Shinobi> = mutableListOf()
+
+    val getShinobis: MutableList<Shinobi>
+        get() = shinobis
 
     init {
         for (i in 0..20) {
