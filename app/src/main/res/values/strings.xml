@@ -5,4 +5,7 @@
     <string name="description">Description</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="shinobi_name_error_message">Shinobi name must not be empty!</string>
+    <string name="shinobi_village_error_message">Shinobi village must not be empty!</string>
+    <string name="shinobi_description_error_message">Shinobi description must no be empty!</string>
 </resources>
