@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.shinobilist.R
 import com.erikriosetiawan.shinobilist.adapters.ShinobiAdapter
+import com.erikriosetiawan.shinobilist.data.SampleData
 import com.erikriosetiawan.shinobilist.databinding.ActivityMainBinding
 import com.erikriosetiawan.shinobilist.models.Shinobi
 
@@ -20,22 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerViewShinobi.apply {
             layoutManager =
                 LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = ShinobiAdapter(this@MainActivity, shinobisData())
+            adapter = ShinobiAdapter(this@MainActivity, SampleData.getShinobis)
         }
 
-    }
-
-    private fun shinobisData(): MutableList<Shinobi> {
-        val shinobis = mutableListOf<Shinobi>()
-        for (i in 0..20) {
-            val shinobi = Shinobi(
-                name = "Shinobi $i",
-                id = i,
-                description = "Description $i",
-                village = "Village $i"
-            )
-            shinobis.add(shinobi)
-        }
-        return shinobis
     }
 }
