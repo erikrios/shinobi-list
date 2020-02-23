@@ -17,4 +17,8 @@ object SampleData {
             shinobis.add(shinobi)
         }
     }
+
+    fun addShinobi(shinobi: Shinobi) {
+        shinobis.add(shinobi)
+    }
 }
