@@ -13,15 +13,17 @@ import com.erikriosetiawan.shinobilist.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: ShinobiAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        adapter = ShinobiAdapter(this, SampleData.getShinobis)
         binding.recyclerViewShinobi.apply {
             layoutManager =
                 LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = ShinobiAdapter(this@MainActivity, SampleData.getShinobis)
+            adapter = adapter
         }
 
         binding.floatingActionButtonAdd.setOnClickListener {
@@ -32,5 +34,10 @@ class MainActivity : AppCompatActivity() {
     private fun addShinobi() {
         val intent = Intent(this, DetailsActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
     }
 }
