@@ -20,11 +20,9 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         adapter = ShinobiAdapter(this, SampleData.getShinobis)
-        binding.recyclerViewShinobi.apply {
-            layoutManager =
-                LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = adapter
-        }
+        binding.recyclerViewShinobi.layoutManager =
+            LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerViewShinobi.adapter = adapter
 
         binding.floatingActionButtonAdd.setOnClickListener {
             addShinobi()
