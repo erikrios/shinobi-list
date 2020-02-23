@@ -1,14 +1,13 @@
 package com.erikriosetiawan.shinobilist.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.shinobilist.R
 import com.erikriosetiawan.shinobilist.adapters.ShinobiAdapter
 import com.erikriosetiawan.shinobilist.data.SampleData
 import com.erikriosetiawan.shinobilist.databinding.ActivityMainBinding
-import com.erikriosetiawan.shinobilist.models.Shinobi
 
 class MainActivity : AppCompatActivity() {
 
