@@ -23,6 +23,5 @@ class MainActivity : AppCompatActivity() {
                 LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
             adapter = ShinobiAdapter(this@MainActivity, SampleData.getShinobis)
         }
-
     }
 }
