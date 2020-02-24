@@ -24,8 +24,12 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
         binding.buttonSave.setOnClickListener {
-            addNewData()
-            finish()
+            if (binding.buttonSave.text == getString(R.string.save)) {
+                addNewData()
+                finish()
+            } else {
+                // Update the data
+            }
         }
         initDataIntent()
     }
