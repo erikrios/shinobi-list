@@ -98,7 +98,6 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun initDataIntent() {
         val intentType = getIntentType()
-        Log.d("TES", intentType.toString())
         if (intentType) {
             binding.buttonSave.text = getString(R.string.change)
             shinobi = getDataIntent()
