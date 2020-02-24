@@ -18,6 +18,8 @@ class DetailsActivity : AppCompatActivity() {
         const val DATA_SHINOBI_KEY = "data_shinobi_key"
     }
 
+    private var shinobi: Shinobi? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
@@ -25,6 +27,7 @@ class DetailsActivity : AppCompatActivity() {
             addNewData()
             finish()
         }
+        initDataIntent()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,6 +71,21 @@ class DetailsActivity : AppCompatActivity() {
             shinobi.village = binding.editTextShinobiVillageFrom.text.toString()
             shinobi.description = binding.editTextShinobiDescription.text.toString()
             SampleData.addShinobi(shinobi)
+        }
+    }
+
+    private fun getIntentType(): Boolean =
+        DATA_SHINOBI_KEY == intent.getStringExtra(DATA_SHINOBI_KEY)
+
+    private fun getDataIntent(): Shinobi? = intent.getParcelableExtra(DATA_SHINOBI_KEY)
+
+    private fun initDataIntent() {
+        if (getIntentType()) {
+            binding.buttonSave.text = getString(R.string.change)
+            shinobi = getDataIntent()
+            binding.editTextShinobiName.setText(shinobi?.name)
+            binding.editTextShinobiVillageFrom.setText(shinobi?.village)
+            binding.editTextShinobiDescription.setText(shinobi?.village)
         }
     }
 }
