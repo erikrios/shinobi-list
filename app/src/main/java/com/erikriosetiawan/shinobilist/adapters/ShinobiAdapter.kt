@@ -21,7 +21,7 @@ class ShinobiAdapter(var context: Context, var shinobis: MutableList<Shinobi>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(shinobis[position]) {
             val intent = Intent(context, DetailsActivity::class.java)
-            intent.putExtra(DetailsActivity.DATA_SHINOBI_KEY, DetailsActivity.DATA_SHINOBI_KEY)
+            intent.putExtra(DetailsActivity.DATA_SHINOBI_TYPE, DetailsActivity.DATA_SHINOBI_KEY)
             intent.putExtra(DetailsActivity.DATA_SHINOBI_KEY, shinobis[position])
             context.startActivity(intent)
         }

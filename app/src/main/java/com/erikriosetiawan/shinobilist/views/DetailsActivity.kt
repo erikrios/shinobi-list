@@ -1,8 +1,10 @@
 package com.erikriosetiawan.shinobilist.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.erikriosetiawan.shinobilist.R
@@ -16,6 +18,7 @@ class DetailsActivity : AppCompatActivity() {
 
     companion object {
         const val DATA_SHINOBI_KEY = "data_shinobi_key"
+        const val DATA_SHINOBI_TYPE = "data_shinobi_type"
     }
 
     private var shinobi: Shinobi? = null
@@ -34,6 +37,7 @@ class DetailsActivity : AppCompatActivity() {
                     binding.editTextShinobiVillageFrom.text.toString(),
                     binding.editTextShinobiDescription.text.toString()
                 )
+                finish()
             }
         }
         initDataIntent()
@@ -50,6 +54,7 @@ class DetailsActivity : AppCompatActivity() {
                 shinobi?.let {
                     SampleData.deleteShinobi(it)
                 }
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -86,17 +91,21 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun getIntentType(): Boolean =
-        DATA_SHINOBI_KEY == intent.getStringExtra(DATA_SHINOBI_KEY)
+        DATA_SHINOBI_KEY == intent.getStringExtra(DATA_SHINOBI_TYPE)
+
 
     private fun getDataIntent(): Shinobi? = intent.getParcelableExtra(DATA_SHINOBI_KEY)
 
     private fun initDataIntent() {
-        if (getIntentType()) {
+        val intentType = getIntentType()
+        Log.d("TES", intentType.toString())
+        if (intentType) {
             binding.buttonSave.text = getString(R.string.change)
             shinobi = getDataIntent()
             binding.editTextShinobiName.setText(shinobi?.name)
             binding.editTextShinobiVillageFrom.setText(shinobi?.village)
-            binding.editTextShinobiDescription.setText(shinobi?.village)
+            binding.editTextShinobiDescription.setText(shinobi?.description)
         }
     }
 }
+
