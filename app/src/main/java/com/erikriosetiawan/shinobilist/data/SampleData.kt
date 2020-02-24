@@ -24,4 +24,9 @@ object SampleData {
         shinobis.add(shinobi)
         TOTAL++
     }
+
+    fun deleteShinobi(shinobi: Shinobi) {
+        shinobis.remove(shinobi)
+        TOTAL--
+    }
 }
