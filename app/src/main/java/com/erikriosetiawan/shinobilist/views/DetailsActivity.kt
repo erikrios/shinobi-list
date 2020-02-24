@@ -38,7 +38,9 @@ class DetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_menu_delete -> {
-                // Do something
+                shinobi?.let {
+                    SampleData.deleteShinobi(it)
+                }
             }
         }
         return super.onOptionsItemSelected(item)
