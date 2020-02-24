@@ -4,6 +4,8 @@ import com.erikriosetiawan.shinobilist.models.Shinobi
 
 object SampleData {
 
+    var TOTAL = 21
+
     private val shinobis: MutableList<Shinobi> = mutableListOf()
 
     val getShinobis: MutableList<Shinobi>
@@ -20,5 +22,6 @@ object SampleData {
 
     fun addShinobi(shinobi: Shinobi) {
         shinobis.add(shinobi)
+        TOTAL++
     }
 }
