@@ -27,13 +27,12 @@ object SampleData {
 
     fun deleteShinobi(shinobi: Shinobi) {
         shinobis.remove(shinobi)
-        TOTAL--
     }
 
     fun updateShinobi(id: Int?, newName: String, newVillage: String, newDescription: String) {
-        shinobis.forEach {
+        shinobis.forEachIndexed { i, it ->
             if (it.id == id) {
-                shinobis[it.id].apply {
+                shinobis[i].apply {
                     name = newName
                     village = newVillage
                     description = newDescription
