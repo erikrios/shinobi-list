@@ -28,7 +28,12 @@ class DetailsActivity : AppCompatActivity() {
                 addNewData()
                 finish()
             } else {
-                // Update the data
+                SampleData.updateShinobi(
+                    shinobi?.id,
+                    binding.editTextShinobiName.text.toString(),
+                    binding.editTextShinobiVillageFrom.text.toString(),
+                    binding.editTextShinobiDescription.text.toString()
+                )
             }
         }
         initDataIntent()

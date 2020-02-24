@@ -30,7 +30,7 @@ object SampleData {
         TOTAL--
     }
 
-    fun updateShinobi(id: Int, newName: String, newVillage: String, newDescription: String) {
+    fun updateShinobi(id: Int?, newName: String, newVillage: String, newDescription: String) {
         for (i in 0 until shinobis.size) {
             if (i == id) {
                 shinobis[i].apply {
