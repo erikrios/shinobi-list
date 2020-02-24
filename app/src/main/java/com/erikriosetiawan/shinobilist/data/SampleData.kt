@@ -31,9 +31,9 @@ object SampleData {
     }
 
     fun updateShinobi(id: Int?, newName: String, newVillage: String, newDescription: String) {
-        for (i in 0 until shinobis.size) {
-            if (i == id) {
-                shinobis[i].apply {
+        shinobis.forEach {
+            if (it.id == id) {
+                shinobis[it.id].apply {
                     name = newName
                     village = newVillage
                     description = newDescription

@@ -2,6 +2,7 @@ package com.erikriosetiawan.shinobilist.views
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,5 +38,12 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         adapter.notifyDataSetChanged()
+        for (i in 0 until SampleData.getShinobis.size) {
+            val shinobi = SampleData.getShinobis[i]
+            Log.d(
+                "MainActivity",
+                "${shinobi.id}\n${shinobi.name}\n${shinobi.village}\n${shinobi.description}"
+            )
+        }
     }
 }
