@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.shinobilist.R
 import com.erikriosetiawan.shinobilist.adapters.ShinobiAdapter
-import com.erikriosetiawan.shinobilist.data.SampleData
 import com.erikriosetiawan.shinobilist.database.ShinobiDatabase
 import com.erikriosetiawan.shinobilist.databinding.ActivityMainBinding
 import com.erikriosetiawan.shinobilist.models.Shinobi
@@ -28,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             val database = ShinobiDatabase.getInstace(this@MainActivity).shinobiDatabaseDao
             val myData = database.getAllShinobi()
             runOnUiThread {
+                Log.d("MainActivity", myData?.get(0)?.name.toString())
                 adapter = ShinobiAdapter(this@MainActivity, myData as MutableList<Shinobi>)
             }
         }
@@ -49,12 +49,5 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         adapter?.notifyDataSetChanged()
-        for (i in 0 until SampleData.getShinobis.size) {
-            val shinobi = SampleData.getShinobis[i]
-            Log.d(
-                "MainActivity",
-                "${shinobi.id}\n${shinobi.name}\n${shinobi.village}\n${shinobi.description}"
-            )
-        }
     }
 }
