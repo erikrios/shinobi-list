@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         binding.floatingActionButtonAdd.setOnClickListener {
             addShinobi()
         }
-
     }
 
     private fun addShinobi() {
