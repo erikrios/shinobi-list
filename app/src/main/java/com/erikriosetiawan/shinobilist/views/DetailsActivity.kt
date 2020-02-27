@@ -60,7 +60,11 @@ class DetailsActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_menu_delete -> {
                 shinobi?.let {
-                    SampleData.deleteShinobi(it)
+                    GlobalScope.launch {
+                        val database =
+                            ShinobiDatabase.getInstace(this@DetailsActivity).shinobiDatabaseDao
+                        database.delete(it)
+                    }
                 }
                 finish()
             }
