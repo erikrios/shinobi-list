@@ -29,11 +29,11 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
                 Log.d("MainActivity", myData?.get(0)?.name.toString())
                 adapter = ShinobiAdapter(this@MainActivity, myData as MutableList<Shinobi>)
+                binding.recyclerViewShinobi.layoutManager =
+                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+                binding.recyclerViewShinobi.adapter = adapter
             }
         }
-        binding.recyclerViewShinobi.layoutManager =
-            LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerViewShinobi.adapter = adapter
 
         binding.floatingActionButtonAdd.setOnClickListener {
             addShinobi()
