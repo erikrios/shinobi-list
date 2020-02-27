@@ -1,9 +1,6 @@
 package com.erikriosetiawan.shinobilist.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.erikriosetiawan.shinobilist.models.Shinobi
 
 @Dao
@@ -14,6 +11,9 @@ interface ShinobiDatabaseDao {
 
     @Update
     fun update(shinobi: Shinobi)
+
+    @Delete
+    fun delete(shinobi: Shinobi)
 
     @Query("SELECT * FROM shinobi_table WHERE id = :id")
     fun get(id: Long): Shinobi?
