@@ -1,16 +1,17 @@
 package com.erikriosetiawan.shinobilist.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.erikriosetiawan.shinobilist.R
 import com.erikriosetiawan.shinobilist.data.SampleData
+import com.erikriosetiawan.shinobilist.database.ShinobiDatabase
 import com.erikriosetiawan.shinobilist.databinding.ActivityDetailsBinding
 import com.erikriosetiawan.shinobilist.models.Shinobi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -86,7 +87,10 @@ class DetailsActivity : AppCompatActivity() {
             shinobi.id = SampleData.TOTAL
             shinobi.village = binding.editTextShinobiVillageFrom.text.toString()
             shinobi.description = binding.editTextShinobiDescription.text.toString()
-            SampleData.addShinobi(shinobi)
+            GlobalScope.launch {
+                val database = ShinobiDatabase.getInstace(this@DetailsActivity).shinobiDatabaseDao
+                database.insert(shinobi)
+            }
         }
     }
 
