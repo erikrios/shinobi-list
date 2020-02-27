@@ -91,7 +91,6 @@ class DetailsActivity : AppCompatActivity() {
         if (!isEmptyField) {
             val shinobi = Shinobi()
             shinobi.name = binding.editTextShinobiName.text.toString()
-            shinobi.id = SampleData.TOTAL
             shinobi.village = binding.editTextShinobiVillageFrom.text.toString()
             shinobi.description = binding.editTextShinobiDescription.text.toString()
             GlobalScope.launch {

@@ -23,20 +23,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        binding.floatingActionButtonAdd.setOnClickListener {
+            addShinobi()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
         GlobalScope.launch {
             val database = ShinobiDatabase.getInstace(this@MainActivity).shinobiDatabaseDao
             val myData = database.getAllShinobi()
             runOnUiThread {
-                Log.d("MainActivity", myData?.get(0)?.name.toString())
+                if (myData != null)
+                    for (i in 0 until myData.size) {
+                        Log.d(
+                            "MainActivity",
+                            "${myData[i].id}\n${myData[i].name}\n${myData[i].village}\n${myData[i].description}\n\n"
+                        )
+                    }
                 adapter = ShinobiAdapter(this@MainActivity, myData as MutableList<Shinobi>)
                 binding.recyclerViewShinobi.layoutManager =
                     LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
                 binding.recyclerViewShinobi.adapter = adapter
             }
-        }
-
-        binding.floatingActionButtonAdd.setOnClickListener {
-            addShinobi()
         }
     }
 
