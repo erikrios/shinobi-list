@@ -32,12 +32,19 @@ class DetailsActivity : AppCompatActivity() {
                 addNewData()
                 finish()
             } else {
-                SampleData.updateShinobi(
-                    shinobi?.id,
-                    binding.editTextShinobiName.text.toString(),
-                    binding.editTextShinobiVillageFrom.text.toString(),
-                    binding.editTextShinobiDescription.text.toString()
-                )
+                val shinobi = shinobi?.id?.let { it1 ->
+                    Shinobi(
+                        id = it1,
+                        name = binding.editTextShinobiName.text.toString(),
+                        village = binding.editTextShinobiVillageFrom.text.toString(),
+                        description = binding.editTextShinobiDescription.text.toString()
+                    )
+                }
+                GlobalScope.launch {
+                    val database =
+                        ShinobiDatabase.getInstace(this@DetailsActivity).shinobiDatabaseDao
+                    shinobi?.let { database.update(it) }
+                }
                 finish()
             }
         }
